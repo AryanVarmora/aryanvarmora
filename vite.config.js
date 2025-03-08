@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/', // Ensures correct routing for GitHub Pages
+  base: '/',  // Ensures correct path
 });
