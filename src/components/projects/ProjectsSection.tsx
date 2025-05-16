@@ -1,42 +1,66 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
-// This would ideally come from your data files or CMS
-const projects = [
+const skillCategories = [
   {
-    id: 1,
-    title: 'Image Caption Generator',
-    description: 'Deep learning model that generates descriptive captions for images using attention mechanisms. Achieved 82% BLEU score.',
-    tags: ['Computer Vision', 'Deep Learning', 'PyTorch', 'NLP'],
-    imageUrl: '/images/placeholder-project.jpg',
-    githubUrl: 'https://github.com/AryanVarmora/project-name',
-    demoUrl: '#'
+    category: 'Languages',
+    skills: [
+      { name: 'Python', level: 90 },
+      { name: 'JavaScript', level: 85 },
+      { name: 'TypeScript', level: 80 },
+      { name: 'Java', level: 75 },
+      { name: 'SQL', level: 85 }
+    ]
   },
   {
-    id: 2,
-    title: 'WildEye',
-    description: 'Wildlife monitoring system using computer vision to detect and classify species. 92% classification accuracy.',
-    tags: ['TensorFlow', 'Computer Vision', 'REST API', 'Real-time Processing'],
-    imageUrl: '/images/placeholder-project.jpg',
-    githubUrl: 'https://github.com/AryanVarmora/project-name',
-    demoUrl: '#'
+    category: 'AI/ML',
+    skills: [
+      { name: 'TensorFlow', level: 90 },
+      { name: 'PyTorch', level: 85 },
+      { name: 'Computer Vision', level: 90 },
+      { name: 'Deep Learning', level: 85 },
+      { name: 'NLP', level: 80 }
+    ]
   },
   {
-    id: 3,
-    title: 'PrognosticEngine',
-    description: 'Predictive analytics platform for healthcare data, forecasting patient outcomes with 88% accuracy.',
-    tags: ['Machine Learning', 'Data Analytics', 'Healthcare', 'Python'],
-    imageUrl: '/images/placeholder-project.jpg',
-    githubUrl: 'https://github.com/AryanVarmora/project-name',
-    demoUrl: '#'
+    category: 'Web Development',
+    skills: [
+      { name: 'React', level: 85 },
+      { name: 'Next.js', level: 80 },
+      { name: 'Node.js', level: 75 },
+      { name: 'Tailwind CSS', level: 90 },
+      { name: 'HTML/CSS', level: 90 }
+    ]
+  },
+  {
+    category: 'DevOps & Tools',
+    skills: [
+      { name: 'Git', level: 90 },
+      { name: 'Docker', level: 80 },
+      { name: 'AWS', level: 75 },
+      { name: 'CI/CD', level: 70 }
+    ]
   }
 ];
 
-export default function ProjectsSection() {
+export default function InteractiveSkillsSection() {
+  const [activeCategory, setActiveCategory] = useState(skillCategories[0].category);
+  const [isInView, setIsInView] = useState(false);
+
+  // Reset animation when category changes
+  useEffect(() => {
+    setIsInView(false);
+    setTimeout(() => setIsInView(true), 100);
+  }, [activeCategory]);
+
+  const currentSkills = skillCategories.find(
+    cat => cat.category === activeCategory
+  )?.skills || [];
+
   return (
-    <section className="py-20" id="projects">
+    <section className="py-24 bg-gradient-to-br from-blue-900 to-indigo-900 text-white" id="skills">
       <div className="container mx-auto px-4">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -45,61 +69,54 @@ export default function ProjectsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold mb-4">Featured Projects</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            A selection of my work in AI/ML and software development that demonstrates my technical expertise and problem-solving abilities.
+          <h2 className="text-4xl font-bold mb-4">Technical Skills</h2>
+          <p className="text-lg text-blue-200 max-w-2xl mx-auto">
+            My expertise spans AI/ML and software development, with a focus on building innovative solutions that solve real-world problems.
           </p>
         </motion.div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              className="bg-white rounded-lg overflow-hidden shadow-lg"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
+        {/* Category tabs */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {skillCategories.map((cat) => (
+            <motion.button
+              key={cat.category}
+              onClick={() => setActiveCategory(cat.category)}
+              className={`px-6 py-3 rounded-full transition ${
+                activeCategory === cat.category
+                  ? 'bg-white text-blue-900 font-medium'
+                  : 'bg-blue-800 bg-opacity-50 text-white hover:bg-opacity-70'
+              }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <div className="h-48 w-full relative bg-gray-200">
-                {/* Placeholder if you don't have images yet */}
-                <div className="absolute inset-0 flex items-center justify-center bg-blue-900">
-                  <span className="text-white text-lg font-medium">{project.title}</span>
-                </div>
+              {cat.category}
+            </motion.button>
+          ))}
+        </div>
+        
+        {/* Skills visualization */}
+        <div className="max-w-3xl mx-auto">
+          {currentSkills.map((skill, index) => (
+            <div key={skill.name} className="mb-6">
+              <div className="flex justify-between mb-2">
+                <span className="font-medium">{skill.name}</span>
+                <span>{skill.level}%</span>
               </div>
-              
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                
-                <div className="flex space-x-4">
-                  <a 
-                    href={project.githubUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 font-medium"
-                  >
-                    GitHub
-                  </a>
-                  <a 
-                    href={project.demoUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 font-medium"
-                  >
-                    Live Demo
-                  </a>
-                </div>
+              <div className="h-3 bg-blue-800 bg-opacity-40 rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full bg-gradient-to-r from-blue-400 to-purple-500 rounded-full"
+                  initial={{ width: 0 }}
+                  animate={{ 
+                    width: isInView ? `${skill.level}%` : 0 
+                  }}
+                  transition={{ 
+                    duration: 1, 
+                    delay: index * 0.1,
+                    ease: "easeOut" 
+                  }}
+                />
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
