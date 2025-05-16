@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin} from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 
 export default function EnhancedHero() {
@@ -93,21 +93,14 @@ export default function EnhancedHero() {
                 <FaGithub />
               </a>
               <a 
-                href="https://linkedin.com/in/yourprofile" 
+                href="https://linkedin.com/in/aryanvarmora" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-white hover:text-blue-400 text-3xl transition-colors"
               >
                 <FaLinkedin />
               </a>
-              <a 
-                href="https://twitter.com/yourprofile" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-white hover:text-blue-400 text-3xl transition-colors"
-              >
-                <FaTwitter />
-              </a>
+              
             </div>
             
             <div className="flex flex-wrap gap-4">
