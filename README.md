@@ -1,59 +1,36 @@
-## Portfolio Website
-Personal portfolio website showcasing my projects and experience as a Software Developer & AI/ML Engineer.
-## About Me
-I'm Aryan Varmora, an AI/ML Engineer & Software Developer focused on developing scalable AI-driven solutions in automation, healthcare, and real-world applications. Currently pursuing an M.S. in Computer Science at Fordham University, specializing in deep learning, computer vision, and predictive analytics.
-## Projects
-### Image Caption Generator
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Deep learning model generating accurate image descriptions using CNNs & LSTMs
-Integrated OpenCV & TensorFlow, achieving 82% BLEU score on MS COCO dataset
-Implemented attention mechanisms to improve caption fluency by 15%
+## Getting Started
 
-### WildEye (Wildlife Monitoring System)
+First, run the development server:
 
-Real-time wildlife detection system using YOLO, Faster R-CNN & SSD
-Processed 1M+ images with 92% classification accuracy across diverse species
-Enhanced tracking through transfer learning & data augmentation techniques
-
-### PrognosticEngine (Predictive Analytics)
-
-Predictive analytics model with feature selection (RFE, Mutual Information)
-Achieved 94% accuracy using supervised learning algorithms
-Integrated hyperparameter tuning & model evaluation metrics for optimization
-
-## Skills
-Programming Languages
-
-Python, Java, C++, C#, SQL, .NET
-
-Machine Learning & AI
-
-TensorFlow, PyTorch, Scikit-learn, OpenCV, NLP, Computer Vision
-
-Data Science & Cloud
-
-Pandas, NumPy, Matplotlib, AWS (S3, EC2, Lambda), Docker, Kubernetes
-
-## Databases & Deployment
-
-MySQL, MongoDB, Redis, PostgreSQL, Flask, FastAPI
-
-## Setup
-bash# Clone this repository
-git clone https://github.com/AryanVarmora/aryanvarmora.git
-
-# Navigate to project directory
-cd portfolio
-
-# Install dependencies
-npm install
-
-# Start development server
+```bash
 npm run dev
-Contact
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-LinkedIn: www.linkedin.com/in/aryanvarmora 
-Email: aryanvarmora8@gmail.com
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-License
-MIT
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
